@@ -1,15 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*struct node 
-{
-	int value;
-	struct node* left_child;
-	struct node* right_child;
-};
-
-typedef struct node node;
-*/
 int left();
 int right();
 void build_max_heap();
