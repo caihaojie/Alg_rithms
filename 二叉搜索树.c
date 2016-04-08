@@ -12,8 +12,8 @@ typedef struct node node;
 typedef struct node* bitree;
 void inorder_tree_walk(bitree);
 bitree tree_search(bitree, int);
-
 bitree buildtree();
+bitree interative_tree_search(bitree, int);
 
 void main()
 {
@@ -21,6 +21,11 @@ void main()
 	bitree root = buildtree();
 	inorder_tree_walk(root);
 	if (result = tree_search(root, 4))
+		printf("\n%p\n", result);
+	else
+		printf("\n未找到\n");
+
+	if (result = interative_tree_search(root, 4))
 		printf("\n%p\n", result);
 	else
 		printf("\n未找到\n");
@@ -65,3 +70,15 @@ bitree tree_search(bitree root, int k)
 		return tree_search(root->rchild, k);
 }
 
+bitree interative_tree_search(bitree root, int k)
+{
+	while (root && root->data != k)
+	{
+		if (root->data > k)
+			root = root->lchild;
+		else
+			root = root->rchild;
+	}
+
+	return root;
+}
