@@ -17,6 +17,8 @@ bitree interative_tree_search(bitree, int);
 bitree tree_minimum(bitree);
 bitree tree_maximum(bitree);
 void tree_insert(bitree*, bitree);
+bitree parent_search(bitree, bitree);
+void transplant(bitree*, bitree, bitree);
 
 void main()
 {
@@ -37,12 +39,16 @@ void main()
 		
 	bitree k;
 	k = (bitree)malloc(sizeof(node));
-	k->data = 5;
+	k->data = 1;
 	k->lchild = NULL;
 	k->rchild = NULL;
-	tree_insert(&root, k);
-	inorder_tree_walk(root);
+	//tree_insert(&root, k);
+	//inorder_tree_walk(root);
 
+
+	transplant(&root, root->lchild->lchild, k);
+
+	inorder_tree_walk(root);
 }
 
 bitree buildtree()
@@ -137,4 +143,23 @@ void tree_insert(bitree* root_address, bitree k)
 		(*root_address)->data = k->data;
 		(*root_address)->lchild = (*root_address)->rchild = NULL;
 	}
+}
+
+bitree parent_search(bitree root, bitree son)
+{
+	if (!root || root->lchild == son || root->rchild == son)
+		return root;
+	return parent_search(root->lchild, son);
+	return parent_search(root->rchild, son);
+}
+
+void transplant(bitree* root_address, bitree old, bitree new)
+{
+	bitree parent = parent_search(*root_address, old);
+	if (!parent)
+		*root_address = parent;
+	else if (old == parent->lchild)
+		parent->lchild = new;
+	else
+		parent->rchild = new;
 }
