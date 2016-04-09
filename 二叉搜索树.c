@@ -14,6 +14,9 @@ void inorder_tree_walk(bitree);
 bitree tree_search(bitree, int);
 bitree buildtree();
 bitree interative_tree_search(bitree, int);
+bitree tree_minimum(bitree);
+bitree tree_maximum(bitree);
+void tree_insert(bitree*, bitree);
 
 void main()
 {
@@ -29,6 +32,17 @@ void main()
 		printf("\n%p\n", result);
 	else
 		printf("\n未找到\n");
+
+	inorder_tree_walk(root);
+		
+	bitree k;
+	k = (bitree)malloc(sizeof(node));
+	k->data = 5;
+	k->lchild = NULL;
+	k->rchild = NULL;
+	tree_insert(&root, k);
+	inorder_tree_walk(root);
+
 }
 
 bitree buildtree()
@@ -81,4 +95,46 @@ bitree interative_tree_search(bitree root, int k)
 	}
 
 	return root;
+}
+
+bitree tree_minimum(bitree root)
+{
+	while (root->lchild)
+		root = root->lchild;
+	return root;
+}
+
+bitree tree_maximum(bitree root)
+{
+	while (root->rchild)
+		root = root->rchild;
+	return root;
+}
+
+void tree_insert(bitree* root_address, bitree k)
+{
+	if (*root_address)
+	{
+		bitree y = *root_address;
+		bitree temp = *root_address;
+		while (temp)
+		{
+			y = temp;
+			if (k->data > (temp)->data)
+				temp = (temp)->rchild;
+			else
+				temp = (temp)->lchild;
+		}
+
+		if (k->data > y->data)
+			y->rchild = k;
+		else
+			y->lchild = k;
+	}
+	else
+	{
+		*root_address = (bitree)malloc(sizeof(node));
+		(*root_address)->data = k->data;
+		(*root_address)->lchild = (*root_address)->rchild = NULL;
+	}
 }
