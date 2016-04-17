@@ -51,6 +51,17 @@ void main()
 	matrix_chain_order(p , 3, (*m)[4], (*s)[4]);
 }
 
+/*************************************************
+Function: matrix_multiply(matrix A, matrix B)
+Description: 两矩阵相乘
+Calls: malloc()
+Called By: main()
+Input:  matrix A->其中一个矩阵的信息
+		matrix B->令一个矩阵的信息
+Output: NULL
+Return: 相乘得到的矩阵的信息
+Others: NULL
+*************************************************/
 matrix matrix_multiply(matrix A, matrix B)
 {
 	if (A.columns == B.rows)
