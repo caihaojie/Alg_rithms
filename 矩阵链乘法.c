@@ -6,7 +6,7 @@ struct matrix
 {
 	int columns;
 	int rows;
-	int (*address)[];
+	int(*address)[];
 };
 
 typedef struct matrix matrix;
@@ -18,14 +18,14 @@ void main()
 {
 	/*
 	int _A[3][3] = {
-		{1, 1, 1},
-		{1, 1, 1},
-		{1, 1, 1}
+	{1, 1, 1},
+	{1, 1, 1},
+	{1, 1, 1}
 	};
 	int _B[3][3] = {
-		{ 1, 1, 1 },
-		{ 1, 1, 1 },
-		{ 1, 1, 1 }
+	{ 1, 1, 1 },
+	{ 1, 1, 1 },
+	{ 1, 1, 1 }
 	};
 
 	matrix A, B;
@@ -44,11 +44,23 @@ void main()
 		printf("\n");
 	}
 	*/
-	int p[] = { 3,3,3,3,3 };
-	int n = 3;
-	int m[4][4];
-	int s[4][4];
-	matrix_chain_order(p , 3, (*m)[4], (*s)[4]);
+	int p[] = { 30,35,15,5,10,20,25 };
+	int n = 6;
+	int m[6][6];
+	int s[6][6];
+	matrix_chain_order(p, n, m, s);
+	
+	printf("%d\t", m[1][3]);
+
+	/*for (int i = 1; i < 6; i++)
+	{
+		for (int j = 1; j < 6; j++)
+		{
+			printf("%d\t",m[i][j]);
+		}
+		printf("\n");
+	}*/
+
 }
 
 /*************************************************
@@ -57,7 +69,7 @@ Description: 两矩阵相乘
 Calls: malloc()
 Called By: main()
 Input:  matrix A->其中一个矩阵的信息
-		matrix B->令一个矩阵的信息
+matrix B->令一个矩阵的信息
 Output: NULL
 Return: 相乘得到的矩阵的信息
 Others: NULL
@@ -66,7 +78,7 @@ matrix matrix_multiply(matrix A, matrix B)
 {
 	if (A.columns == B.rows)
 	{
-		int (*result)[] = (int**)malloc(A.rows * B.columns * sizeof(int));
+		int(*result)[] = (int**)malloc(A.rows * B.columns * sizeof(int));
 
 		for (int i = 0; i < A.rows; i++)
 		{
@@ -94,8 +106,8 @@ matrix matrix_multiply(matrix A, matrix B)
 }
 
 void matrix_chain_order(int* p, int n, int (*m)[], int (*s)[])
-{
-	for (int i = 1; i <= n; i++)
+{	
+	for (int i = 0; i <= n; i++)
 	{
 		(*m + i)[i] = 0;
 	}
