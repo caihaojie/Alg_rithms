@@ -46,21 +46,31 @@ void main()
 	*/
 	int p[] = { 30,35,15,5,10,20,25 };
 	int n = 6;
-	int m[6][6];
-	int s[6][6];
+	int m[6][6] = {0};
+	int s[6][6] = {0};
 	matrix_chain_order(p, n, m, s);
 	
-	printf("%d\t", m[1][3]);
+	//printf("%d\t", m[1][3]);
 
-	/*for (int i = 1; i < 6; i++)
+	for (int i = 0; i < 7; i++)
 	{
-		for (int j = 1; j < 6; j++)
+		for (int j = 0; j < 7; j++)
 		{
-			printf("%d\t",m[i][j]);
+			printf("\t%d",m[i][j]);
 		}
 		printf("\n");
-	}*/
+	}
 
+	printf("\n");
+
+	for (int i = 0; i < 6; i++)
+	{
+		for (int j = 0; j < 6; j++)
+		{
+			printf("\t%d", s[i][j]);
+		}
+		printf("\n");
+	}
 }
 
 /*************************************************
@@ -107,18 +117,15 @@ matrix matrix_multiply(matrix A, matrix B)
 
 void matrix_chain_order(int* p, int n, int (*m)[], int (*s)[])
 {	
-	for (int i = 0; i <= n; i++)
-	{
-		(*m + i)[i] = 0;
-	}
+	int j,L,i,k;
 
-	for (int L = 2; L <= n; L++)
+	for (L = 0; L < n; L++)
 	{
-		for (int i = 1; i <= n - L + 1; i++)
+		for (i = 0; i < n - L + 1; i++)
 		{
-			int j = i + L - 1;
+			j = i + L - 1;
 			(*m + i)[j] = INT_MAX;
-			for (int k = i; k <= j - 1; k++)
+			for (k = i; k <=j - 1; k++)
 			{
 				int	q = (*m + i)[k] + (*m + k + 1)[j] + p[i - 1] * p[k] * p[j];
 				if (q < (*m + i)[j])
