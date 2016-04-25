@@ -79,7 +79,7 @@ Description: 两矩阵相乘
 Calls: malloc()
 Called By: main()
 Input:  matrix A->其中一个矩阵的信息
-matrix B->令一个矩阵的信息
+		matrix B->令一个矩阵的信息
 Output: NULL
 Return: 相乘得到的矩阵的信息
 Others: NULL
@@ -115,6 +115,19 @@ matrix matrix_multiply(matrix A, matrix B)
 	}
 }
 
+/*************************************************
+Function: matrix_chain_order(int* p, int n, int (*m)[], int (*s)[])
+Description: 获得最优解
+Calls: NULL
+Called By: main()
+Input:  int* p->存放矩阵链信息的数组
+		int n->数组p的长度，不包括p[0]
+		int (*m)[]->存放最优解的二维数组
+		int (*s)[]->存放分隔方式的二维数组
+Output: NULL
+Return: NULL
+Others: NULL
+*************************************************/
 void matrix_chain_order(int* p, int n, int (*m)[], int (*s)[])
 {	
 	int j,L,i,k;
