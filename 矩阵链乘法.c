@@ -16,34 +16,6 @@ matrix matrix_multiply();
 
 void main()
 {
-	/*
-	int _A[3][3] = {
-	{1, 1, 1},
-	{1, 1, 1},
-	{1, 1, 1}
-	};
-	int _B[3][3] = {
-	{ 1, 1, 1 },
-	{ 1, 1, 1 },
-	{ 1, 1, 1 }
-	};
-
-	matrix A, B;
-	A.address = _A;
-	B.address = _B;
-	A.columns = A.rows = B.columns = B.rows = 3;
-	B.rows = 2;
-	matrix C = matrix_multiply(A, B);
-
-	for (int i = 0; i < A.rows; i++)
-	{
-		for (int j = 0; j < B.columns; j++)
-		{
-			printf("%d\t", (*C.address + i)[j]);
-		}
-		printf("\n");
-	}
-	*/
 	int p[] = { 30,35,15,5,10,20,25 };
 	int n = 6;
 	int m[6][6] = {0};
